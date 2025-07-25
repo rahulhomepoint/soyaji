@@ -1,0 +1,52 @@
+@import "tailwindcss";
+@plugin "flowbite-react/plugin/tailwindcss";
+@source "../.flowbite-react/class-list.json";
+@custom-variant dark (&:where(.dark, .dark *));
+
+@font-face {
+  font-family: "august";
+  src: url("./fontStyle/BREAKSONG.otf");
+}
+
+@font-face {
+  font-family: "median-tomato";
+  src: url("./fontStyle/Tomato Grotesk/TomatoGrotesk-Medium.otf");
+}
+
+@font-face {
+  font-family: "bold-tomato";
+  src: url("./fontStyle/Tomato Grotesk/TomatoGrotesk-Bold.otf");
+}
+
+@font-face {
+  font-family: "extrabold-tomato";
+  src: url("./fontStyle/Tomato Grotesk/TomatoGrotesk-ExtraBold.otf");
+}
+
+.BREAKSONG {
+  font-family: "august" !important;
+}
+
+.media-tomato {
+  font-family: "median-tomato";
+}
+
+.bold-tomato {
+  font-family: "bold-tomato" !important;
+}
+
+.extrabold-tomato {
+  font-family: "extrabold-tomato" !important;
+}
+
+body {
+  font-family: "median-tomato";
+}
+
+.purple_text {
+  color: #4a295e;
+}
+
+.bg_purple {
+  background-color: #4a295e;
+}
