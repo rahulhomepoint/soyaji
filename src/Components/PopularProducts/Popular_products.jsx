@@ -3,7 +3,10 @@ import { PopulerCard } from "../../Util/Cards/PopulerCard";
 import popularProducts from "../../Util/popularProductsData";
 import background from "../../asset/WEBSITE_ASSETS/BG_purple.png";
 
-const PopularProducts = () => (
+/**
+ * @param {{ addToCart: (product: any, event?: any) => void, cart: Array<{ product: { name: string }, quantity: number }>, updateQuantity: (productName: string, newQuantity: number) => void }} props
+ */
+const PopularProducts = ({ addToCart, cart, updateQuantity }) => (
   <section
     className="relative flex w-full flex-col items-center overflow-hidden px-4 py-16"
     style={{
@@ -30,6 +33,9 @@ const PopularProducts = () => (
           image={product.image}
           price={product.price}
           oldPrice={product.oldPrice}
+          addToCart={addToCart}
+          cart={cart}
+          updateQuantity={updateQuantity}
         />
       ))}
     </div>

@@ -15,16 +15,17 @@ import {
 import logo from "../../asset/Soyawala Logo design.png";
 import { Link } from "react-router-dom";
 
-const SoyajiNavbar = () => {
+/**
+ * @param {{ cart: Array<{ product: { name: string }, quantity: number }> }} props
+ */
+const SoyajiNavbar = ({ cart }) => {
   const [showSearch, setShowSearch] = useState(false);
   return (
     <Navbar fluid rounded className="sticky top-0 z-50 w-full py-2 sm:!px-20">
       {/* Logo and Brand */}
-      <Link to="/">
-        <NavbarBrand>
-          <img src={logo} className="mr-3 h-10 sm:h-12" alt="Soyawala Logo" />
-        </NavbarBrand>
-      </Link>
+      <NavbarBrand href="/">
+        <img src={logo} className="mr-3 h-10 sm:h-12" alt="Soyawala Logo" />
+      </NavbarBrand>
       {/* Responsive Toggle */}
       <NavbarToggle />
       {/* Navigation Links */}
@@ -75,7 +76,7 @@ const SoyajiNavbar = () => {
               size="xs"
               className="rounded-full border-2 border-white"
             >
-              0
+              {cart.reduce((sum, item) => sum + item.quantity, 0)}
             </Badge>
           </span>
         </button>

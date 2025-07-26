@@ -1,4 +1,6 @@
 import React, { useState } from "react";
+import { Toast, ToastToggle } from "flowbite-react";
+import { HiCheck } from "react-icons/hi";
 import { ProductCard } from "../../Util/Cards/ProductCard";
 import BG_PAPER from "../../asset/WEBSITE_ASSETS/BG_PAPER_1.png";
 import curdImg from "../../asset/WEBSITE_ASSETS/CURD.avif";
@@ -127,7 +129,16 @@ const discountOptions = [
   "10% or more",
 ];
 
-export default function ProductsPage() {
+/**
+ * @param {{ addToCart: (product: any, event?: any) => void, cart: Array<{ product: { name: string }, quantity: number }>, updateQuantity: (productName: string, newQuantity: number) => void, toast: { show: boolean, message: string, position: { x: number, y: number } }, hideToast: () => void }} props
+ */
+export default function ProductsPage({
+  addToCart,
+  cart,
+  updateQuantity,
+  toast,
+  hideToast,
+}) {
   const [selectedCategory, setSelectedCategory] = useState("All");
   const [sortBy, setSortBy] = useState("Popularity");
   const [selectedDiscounts, setSelectedDiscounts] = useState([]);
@@ -373,9 +384,30 @@ export default function ProductsPage() {
             {/* Product Grid */}
             <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
               {filteredAndSortedProducts.map((product, index) => (
-                <ProductCard key={index} {...product} />
+                <ProductCard
+                  key={index}
+                  {...product}
+                  addToCart={addToCart}
+                  cart={cart}
+                  updateQuantity={updateQuantity}
+                />
               ))}
             </div>
+
+            {/* Toast Notification - positioned in bottom-right corner */}
+            {toast && toast.show && (
+              <div className="fixed right-5 bottom-5 z-50">
+                <Toast>
+                  <div className="inline-flex h-8 w-8 shrink-0 items-center justify-center rounded-lg bg-green-100 text-green-500">
+                    <HiCheck className="h-5 w-5" />
+                  </div>
+                  <div className="ml-3 text-sm font-normal">
+                    {toast.message}
+                  </div>
+                  <ToastToggle onDismiss={hideToast} />
+                </Toast>
+              </div>
+            )}
 
             {filteredAndSortedProducts.length === 0 && (
               <div className="py-12 text-center">

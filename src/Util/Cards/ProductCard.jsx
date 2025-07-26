@@ -1,5 +1,8 @@
-import React, { useState } from "react";
+import React from "react";
 
+/**
+ * @param {{ image: string, name: string, unit: string, price: number, description: string, button: string, addToCart: (product: any, event?: any) => void, cart: Array<{ product: { name: string }, quantity: number }>, updateQuantity: (productName: string, newQuantity: number) => void }} props
+ */
 export const ProductCard = ({
   image,
   name,
@@ -7,13 +10,41 @@ export const ProductCard = ({
   price,
   description,
   button,
+  addToCart,
+  cart,
+  updateQuantity,
 }) => {
-  const [quantity, setQuantity] = useState(0);
+  // Defensive: if addToCart is not a function, warn and use a no-op
+  const safeAddToCart =
+    typeof addToCart === "function"
+      ? addToCart
+      : () => {
+          console.warn("addToCart prop is not a function in ProductCard");
+        };
 
-  const handleAdd = () => setQuantity(1);
-  const handleIncrease = () => setQuantity((q) => q + 1);
-  const handleDecrease = () => setQuantity((q) => (q > 1 ? q - 1 : 0));
+  // Check if product is in cart
+  const cartItem = cart?.find((item) => item.product.name === name);
+  const currentQuantity = cartItem?.quantity || 0;
 
+  // Safe update quantity function
+  const safeUpdateQuantity =
+    typeof updateQuantity === "function"
+      ? updateQuantity
+      : () => {
+          console.warn("updateQuantity prop is not a function in ProductCard");
+        };
+
+  const handleIncrease = () => {
+    safeUpdateQuantity(name, currentQuantity + 1);
+  };
+
+  const handleDecrease = () => {
+    if (currentQuantity > 1) {
+      safeUpdateQuantity(name, currentQuantity - 1);
+    } else if (currentQuantity === 1) {
+      safeUpdateQuantity(name, 0); // Remove from cart
+    }
+  };
   return (
     <div
       className="flex max-w-xs flex-col justify-between border border-[#4a295e] bg-[#f7ede2] shadow-md"
@@ -31,33 +62,35 @@ export const ProductCard = ({
           <div className="purple_text bold-tomato mb-1 text-lg leading-tight">
             {name}
           </div>
-          <div className="purple_text mb-2 text-base opacity-80" >
-            Unit - <span className="text-sm ">{unit}</span>
+          <div className="purple_text mb-2 text-base opacity-80">
+            Unit - <span className="text-sm">{unit}</span>
           </div>
           <div className="purple_text mb-2 text-xs">{description}</div>
         </div>
         <div className="mt-1 flex items-center justify-between">
           <span className="purple_text text-lg">₹{price}</span>
-          {quantity === 0 ? (
+          {currentQuantity === 0 ? (
             <button
               className="rounded-md border border-[#4a295e] px-6 py-1 transition-colors duration-150 hover:bg-[#4a295e] hover:text-white"
-              onClick={handleAdd}
+              onClick={() =>
+                safeAddToCart({ image, name, unit, price, description, button })
+              }
             >
               {button}
             </button>
           ) : (
             <div className="flex items-center rounded-md bg-[#4a295e] px-6 py-1">
               <button
-                className="px-2 text-xl text-white"
+                className="px-2 text-xl text-white transition-colors hover:text-gray-200"
                 onClick={handleDecrease}
               >
                 -
               </button>
               <span className="px-3 text-lg text-white select-none">
-                {quantity}
+                {currentQuantity}
               </span>
               <button
-                className="px-2 text-xl text-white"
+                className="px-2 text-xl text-white transition-colors hover:text-gray-200"
                 onClick={handleIncrease}
               >
                 +
