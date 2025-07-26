@@ -6,7 +6,7 @@ import { AskForOrder } from "../AskForOrder/AskForOrder";
 import { Products } from "../future_products.jsx/Products";
 
 /**
- * @param {{ addToCart: (product: any, event?: any) => void, cart: Array<{ product: { name: string }, quantity: number }>, updateQuantity: (productName: string, newQuantity: number) => void }} props
+ * @param {{ addToCart: (product: any) => void, cart: Array<{ product: { name: string }, quantity: number }>, updateQuantity: (productName: string, newQuantity: number) => void }} props
  */
 export default function Home({ addToCart, cart, updateQuantity }) {
   return (
@@ -18,7 +18,11 @@ export default function Home({ addToCart, cart, updateQuantity }) {
         cart={cart}
         updateQuantity={updateQuantity}
       />
-      <Products />
+      <Products
+        addToCart={addToCart}
+        cart={cart}
+        updateQuantity={updateQuantity}
+      />
       <About />
       <AskForOrder />
     </>

@@ -104,7 +104,10 @@ const products = [
   },
 ];
 
-export const Products = () => {
+/**
+ * @param {{ addToCart: (product: any) => void, cart: Array<{ product: { name: string }, quantity: number }>, updateQuantity: (productName: string, newQuantity: number) => void }} props
+ */
+export const Products = ({ addToCart, cart, updateQuantity }) => {
   return (
     <div
       style={{
@@ -140,7 +143,13 @@ export const Products = () => {
         }}
       >
         {products.map((product, i) => (
-          <ProductCard key={i} {...product} />
+          <ProductCard
+            key={i}
+            {...product}
+            addToCart={addToCart}
+            cart={cart}
+            updateQuantity={updateQuantity}
+          />
         ))}
       </div>
       <Button className="bg_purple hover:bg_purple absolute -bottom-5 left-1/2 z-10 mt-10 -translate-x-1/2 text-white">

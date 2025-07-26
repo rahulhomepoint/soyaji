@@ -63,42 +63,7 @@ export const PopulerCard = ({
           </span>
         </div>
 
-        {/* Cart Controls */}
-        {currentQuantity === 0 ? (
-          <button
-            className="rounded-md border border-[#4a295e] px-6 py-1 transition-colors duration-150 hover:bg-[#4a295e] hover:text-white"
-            onClick={() =>
-              safeAddToCart({
-                image,
-                name: title,
-                unit: "1 unit",
-                price,
-                description: `${title} - Premium quality dairy product`,
-                button: "ADD",
-              })
-            }
-          >
-            ADD
-          </button>
-        ) : (
-          <div className="flex items-center justify-center rounded-md bg-[#4a295e] px-6 py-1">
-            <button
-              className="px-2 text-xl text-white transition-colors hover:text-gray-200"
-              onClick={handleDecrease}
-            >
-              -
-            </button>
-            <span className="px-3 text-lg text-white select-none">
-              {currentQuantity}
-            </span>
-            <button
-              className="px-2 text-xl text-white transition-colors hover:text-gray-200"
-              onClick={handleIncrease}
-            >
-              +
-            </button>
-          </div>
-        )}
+       
       </div>
     </div>
   );
