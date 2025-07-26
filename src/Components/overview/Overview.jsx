@@ -143,7 +143,7 @@ export const Overview = () => {
       <img
         src={LEFT_LEAF}
         alt="left_leaf"
-        className="absolute bottom-40 -left-40 w-[250px]"
+        className="absolute bottom-50 -left-30 w-[250px] rotate-10"
       />
     </div>
   );

@@ -9,6 +9,7 @@ import chocolateImg from "../../asset/WEBSITE_ASSETS/CHOCKLATE_SOYA_MILK.jpg";
 import cheeseImg from "../../asset/WEBSITE_ASSETS/PLAIN_CHEESE.jpg";
 import yogurtImg from "../../asset/WEBSITE_ASSETS/NATURAL_YOGURT.jpg";
 import { Button } from "flowbite-react";
+import LEFT_LEAF from "../../asset/WEBSITE_ASSETS/leaf-01.png";
 
 const products = [
   {
@@ -27,7 +28,7 @@ const products = [
     price: 148,
     description:
       "Enriched with vital nutrients of soya. Help support healthy muscles and organs. Rich in Omega3.",
-    button: "+ 1 -",
+    button: "ADD",
   },
   {
     image: soyaMilkImg,
@@ -142,12 +143,14 @@ export const Products = () => {
           <ProductCard key={i} {...product} />
         ))}
       </div>
-      <Button
-        color=""
-        className="bg_purple absolute -bottom-5 left-1/2 mt-10 -translate-x-1/2 text-white hover:bg-purple-700"
-      >
+      <Button className="bg_purple hover:bg_purple absolute -bottom-5 left-1/2 z-10 mt-10 -translate-x-1/2 text-white">
         More Products
       </Button>
+      <img
+        src={LEFT_LEAF}
+        alt="left_leaf"
+        className="absolute -bottom-86 -left-20 z-20 w-80 rotate-38 rotate-x-15 -rotate-y-30"
+      />
     </div>
   );
 };

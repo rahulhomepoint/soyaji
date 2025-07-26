@@ -28,19 +28,19 @@ export const ProductCard = ({
       </div>
       <div className="flex flex-1 flex-col justify-between p-3">
         <div>
-          <div className="purple_text font-bold-tomato mb-1 text-lg leading-tight">
+          <div className="purple_text bold-tomato mb-1 text-lg leading-tight">
             {name}
           </div>
-          <div className="purple_text mb-2 text-base">
-            Unit - <span className="font-bold-tomato text-sm">{unit}</span>
+          <div className="purple_text mb-2 text-base opacity-80" >
+            Unit - <span className="text-sm ">{unit}</span>
           </div>
           <div className="purple_text mb-2 text-xs">{description}</div>
         </div>
         <div className="mt-1 flex items-center justify-between">
-          <span className="purple_text font-bold-tomato text-lg">₹{price}</span>
+          <span className="purple_text text-lg">₹{price}</span>
           {quantity === 0 ? (
             <button
-              className="font-bold-tomato rounded-md border border-[#4a295e] px-6 py-1 transition-colors duration-150 hover:bg-[#4a295e] hover:text-white"
+              className="rounded-md border border-[#4a295e] px-6 py-1 transition-colors duration-150 hover:bg-[#4a295e] hover:text-white"
               onClick={handleAdd}
             >
               {button}
