@@ -13,31 +13,37 @@ import {
   ShoppingCartIcon,
 } from "@heroicons/react/24/solid";
 import logo from "../../asset/Soyawala Logo design.png";
+import { Link } from "react-router-dom";
 
 const SoyajiNavbar = () => {
   const [showSearch, setShowSearch] = useState(false);
   return (
-    <Navbar fluid rounded className="mx-10 px-4 py-2">
+    <Navbar fluid rounded className="sticky top-0 z-50 w-full py-2 sm:!px-20">
       {/* Logo and Brand */}
-      <NavbarBrand href="/">
-        <img src={logo} className="mr-3 h-10 sm:h-12" alt="Soyawala Logo" />
-      </NavbarBrand>
+      <Link to="/">
+        <NavbarBrand>
+          <img src={logo} className="mr-3 h-10 sm:h-12" alt="Soyawala Logo" />
+        </NavbarBrand>
+      </Link>
       {/* Responsive Toggle */}
       <NavbarToggle />
       {/* Navigation Links */}
       <NavbarCollapse>
-        <NavbarLink href="/" active className="text-orange-600">
-          Home
-        </NavbarLink>
-        <NavbarLink href="/about" className="text-purple-900">
-          About Us
-        </NavbarLink>
-        <NavbarLink href="/products" className="text-purple-900">
-          Products
-        </NavbarLink>
-        <NavbarLink href="/contacts" className="text-purple-900">
-          Contacts
-        </NavbarLink>
+        <Link to="/">
+          {" "}
+          <NavbarLink href="/" active className="text-orange-600">
+            Home
+          </NavbarLink>
+        </Link>
+        <Link to="/about">
+          <NavbarLink className="text-purple-900">About Us</NavbarLink>
+        </Link>
+        <Link to="/products">
+          <NavbarLink className="text-purple-900">Products</NavbarLink>
+        </Link>
+        <Link to="/contacts">
+          <NavbarLink className="text-purple-900">Contacts</NavbarLink>
+        </Link>
       </NavbarCollapse>
       {/* Icons */}
       <div className="ml-4 flex items-center gap-4">
