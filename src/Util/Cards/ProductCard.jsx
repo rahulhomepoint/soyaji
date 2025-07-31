@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 
 /**
  * @param {{ image: string, name: string, unit: string, price: number, description: string, button: string, addToCart: (product: any, event?: any) => void, cart: Array<{ product: { name: string }, quantity: number }>, updateQuantity: (productName: string, newQuantity: number) => void }} props
@@ -14,6 +14,7 @@ export const ProductCard = ({
   cart,
   updateQuantity,
 }) => {
+  const [loaded, setLoaded] = useState(false);
   // Defensive: if addToCart is not a function, warn and use a no-op
   const safeAddToCart =
     typeof addToCart === "function"
@@ -47,25 +48,33 @@ export const ProductCard = ({
   };
   return (
     <div
-      className="flex max-w-xs flex-col justify-between border border-[#4a295e] bg-[#f7ede2] shadow-md"
+      className="mx-auto flex max-w-xs flex-col justify-between border border-[#4a295e] bg-[#f7ede2] shadow-md"
       style={{ fontFamily: "median-tomato" }}
     >
-      <div className="mb-3 overflow-hidden">
+      <div className="relative mb-3 overflow-hidden">
+        {/* Blurred placeholder */}
+        <div
+          className={`absolute inset-0 h-full w-full bg-gray-200 transition-all duration-500 ${loaded ? "opacity-0" : "opacity-100 blur-md"}`}
+        />
+        {/* Actual image */}
         <img
           src={image}
           alt={name}
-          className="h-54 w-full rounded-b-2xl border-b border-[#4a295e] object-cover"
+          className={`h-34 w-full rounded-b-2xl border-b border-[#4a295e] object-cover transition-all duration-500 md:h-54 ${loaded ? "blur-0 opacity-100" : "opacity-0 blur-md"}`}
+          onLoad={() => setLoaded(true)}
         />
       </div>
       <div className="flex flex-1 flex-col justify-between p-3">
         <div>
-          <div className="purple_text bold-tomato mb-1 text-lg leading-tight">
+          <div className="purple_text bold-tomato mb-1 line-clamp-1 leading-tight md:text-lg">
             {name}
           </div>
-          <div className="purple_text mb-2 text-base opacity-80">
+          <div className="purple_text mb-2 text-sm opacity-80 md:text-base">
             Unit - <span className="text-sm">{unit}</span>
           </div>
-          <div className="purple_text mb-2 text-xs">{description}</div>
+          <div className="purple_text mb-2 line-clamp-2 overflow-hidden text-xs">
+            {description}
+          </div>
         </div>
         <div className="mt-1 flex items-center justify-between">
           <span className="purple_text text-lg">₹{price}</span>
@@ -81,16 +90,16 @@ export const ProductCard = ({
           ) : (
             <div className="flex items-center rounded-md bg-[#4a295e] px-6 py-1">
               <button
-                className="px-2 text-xl text-white transition-colors hover:text-gray-200"
+                className="text-white transition-colors hover:text-gray-200 md:px-2 md:text-xl"
                 onClick={handleDecrease}
               >
                 -
               </button>
-              <span className="px-3 text-lg text-white select-none">
+              <span className="px-2 text-lg text-white select-none md:px-3">
                 {currentQuantity}
               </span>
               <button
-                className="px-2 text-xl text-white transition-colors hover:text-gray-200"
+                className="text-white transition-colors hover:text-gray-200 md:px-2 md:text-xl"
                 onClick={handleIncrease}
               >
                 +

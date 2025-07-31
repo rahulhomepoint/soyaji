@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 
 /**
  * @param {{ title: string, image: string, price: number, oldPrice: number, addToCart: (product: any, event?: any) => void, cart: Array<{ product: { name: string }, quantity: number }>, updateQuantity: (productName: string, newQuantity: number) => void }} props
@@ -12,6 +12,7 @@ export const PopulerCard = ({
   cart,
   updateQuantity,
 }) => {
+  const [loaded, setLoaded] = useState(false);
   // Defensive: if addToCart is not a function, warn and use a no-op
   const safeAddToCart =
     typeof addToCart === "function"
@@ -46,14 +47,24 @@ export const PopulerCard = ({
 
   return (
     <div
-      className="flex max-w-xs flex-col items-center overflow-hidden border-2 border-[#e98209] bg-[#ede6e1] shadow-lg"
+      className="mx-auto flex max-w-xs flex-col items-center overflow-hidden border-2 border-yellow-300 bg-[#ede6e1] shadow-lg"
       style={{ boxShadow: "0 4px 16px rgba(124,77,158,0.15)" }}
     >
-      <div className="flex h-64 w-full items-center justify-center overflow-hidden bg-[#7c4d9e]">
-        <img src={image} alt={title} className="h-full w-full object-cover" />
+      <div className="relative flex h-34 w-full items-center justify-center overflow-hidden bg-[#7c4d9e] md:h-64">
+        {/* Blurred placeholder */}
+        <div
+          className={`absolute inset-0 h-full w-full bg-gray-200 transition-all duration-500 ${loaded ? "opacity-0" : "opacity-100 blur-md"}`}
+        />
+        {/* Actual image */}
+        <img
+          src={image}
+          alt={title}
+          className={`h-full w-full object-cover transition-all duration-500 ${loaded ? "blur-0 opacity-100" : "opacity-0 blur-md"}`}
+          onLoad={() => setLoaded(true)}
+        />
       </div>
       <div className="w-full py-4 text-center">
-        <h2 className="purple_text mb-2 text-xl font-bold tracking-wide">
+        <h2 className="purple_text mb-2 font-bold tracking-wide md:text-xl">
           {title}
         </h2>
         <div className="mb-3 flex items-center justify-center gap-3">
@@ -62,8 +73,6 @@ export const PopulerCard = ({
             ₹{oldPrice}.00
           </span>
         </div>
-
-       
       </div>
     </div>
   );

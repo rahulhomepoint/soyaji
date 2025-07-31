@@ -13,7 +13,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Home from "./Components/Home/Home";
 // @ts-expect-error: No declaration file for JSX import from JS file
 import ProductsPage from "./Components/All_Products/ProductsPage";
-import React, { useState } from "react";
+import { useState } from "react";
 
 // Product type
 interface Product {
@@ -134,7 +134,7 @@ export default function App() {
         <Route path="/order" element={<AskForOrder />} />
         {/* Add more routes as needed */}
       </Routes>
-      <Footer />
+      {/* <Footer /> */}
     </BrowserRouter>
   );
 }

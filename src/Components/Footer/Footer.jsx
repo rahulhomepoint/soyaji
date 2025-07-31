@@ -35,11 +35,12 @@ export const Footer = () => {
             alignItems: "flex-start",
             padding: "40px 60px 0 60px",
             alignItems: "center",
+            flexWrap: "wrap",
           }}
         >
           {/* Left section */}
           <div style={{ flex: 1 }}>
-            <div className="mediam_tomato mb-18 text-6xl text-white">
+            <div className="mediam_tomato mb-18 text-3xl text-white md:text-6xl">
               CONTACTS
             </div>
 
@@ -99,9 +100,9 @@ export const Footer = () => {
           }}
         />
         {/* Bottom row */}
-        <div className="flex items-center justify-between px-10 py-8 text-sm text-white">
+        <div className="flex flex-wrap items-center justify-between px-10 py-8 text-sm text-white">
           <div>copyright @2025 by Home Point </div>
-          <div className="flex gap-10">
+          <div className="mt:mb-0 mt-5 flex flex-wrap gap-4 md:gap-10">
             <span>About</span>
             <span>Products</span>
             <span>Services</span>

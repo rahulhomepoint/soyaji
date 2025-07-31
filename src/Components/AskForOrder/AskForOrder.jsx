@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import contact_bg from "../../asset/WEBSITE_ASSETS/Contact_BG.png";
+import contact_us from "../../asset/WEBSITE_ASSETS/CONTACT_US.jpg";
 import leaf_icon from "../../asset/logo_purple.png";
 import left_leaf from "../../asset/WEBSITE_ASSETS/leaf-02.png";
 
@@ -53,9 +54,9 @@ export const AskForOrder = () => {
             <div className="relative rounded-lg border-2 border-yellow-400 p-4">
               {/* Main soy products image */}
               <img
-                src="/src/asset/WEBSITE_ASSETS/CONTACT_US.jpg"
+                src={contact_us}
                 alt="Soy Products Collection"
-                className="h-[80vh] w-full rounded-lg object-cover"
+                className="h-[560px] w-full rounded-lg object-cover"
               />
 
               {/* Product labels overlay */}
@@ -166,7 +167,7 @@ export const AskForOrder = () => {
                 {/* Submit Button */}
                 <button
                   type="submit"
-                  className="w-full transform rounded-lg bg-yellow-400 px-6 py-4 font-bold purple_text transition-colors duration-300 hover:scale-105 hover:bg-yellow-300"
+                  className="purple_text w-full transform rounded-lg bg-yellow-400 px-6 py-4 font-bold transition-colors duration-300 hover:scale-105 hover:bg-yellow-300"
                 >
                   Send Message
                 </button>

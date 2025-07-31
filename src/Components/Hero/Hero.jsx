@@ -11,15 +11,15 @@ export const Hero = () => {
   return (
     <>
       <section
-        className="relative flex min-h-[90vh] w-full flex-col justify-between bg-contain bg-no-repeat"
+        className="relative flex h-45 w-full flex-col flex-wrap justify-between bg-cover bg-center bg-no-repeat md:min-h-[80vh] lg:min-h-[82vh]"
         style={{ backgroundImage: `url(${heroBg})` }}
       >
         {/* Overlay */}
         <div className="absolute inset-0 z-0 bg-gradient-to-r from-purple-200/10 to-purple-400/30" />
         {/* Main Content */}
-        <div className="relative z-10 flex flex-col items-center justify-between gap-8 px-6 py-42 md:flex-row md:px-20">
+        <div className="relative z-10 flex flex-col items-center justify-between gap-8 px-6 md:flex-row md:py-32">
           {/* Left: Product Image (placeholder) */}
-          <div className="flex w-full flex-col items-center gap-4 md:w-1/2 md:items-start">
+          <div className="flex w-full flex-col !items-end gap-4 md:w-1/2 md:items-start">
             {/* <div className="flex items-end gap-4">
             <img
               src="/src/asset/Soyawala Logo design.png"
@@ -34,19 +34,18 @@ export const Hero = () => {
           </div> */}
           </div>
           {/* Right: Text Content */}
-          <div className="posi itemter flex w-full flex-col gap-6 text-center md:w-1/2 md:items-start md:text-left">
+          <div className="flex w-full flex-col items-end gap-6 text-left md:w-1/2 md:items-start md:text-left">
             <h1 className="BREAKSONG text-xl leading-tight text-[#fed365] drop-shadow-lg md:text-4xl">
               The Best alternative <br className="hidden md:block" /> To Cow's
               Milk
             </h1>
-            <p className="media-tomato max-w-lg text-lg text-white md:text-2xl">
+            <p className="media-tomato hidden max-w-lg text-lg text-white md:inline md:text-2xl">
               Soya milk as healthy as cow's milk is the new idea of faster and
               healthy lifestyle.
             </p>
             <Button
-              color="yellow"
-              size="lg"
-              className="px-8 py-2 font-bold text-[#4a295e] shadow-md"
+              size="sm"
+              className="!hover:!bg-amber-500 shadow- w-fit !bg-amber-400 text-sm font-bold !text-[#4a295e] md:px-8 md:py-2 md:text-base"
             >
               Shop Now
             </Button>
@@ -57,22 +56,26 @@ export const Hero = () => {
       </section>
       <div>
         {/* Features Row */}
-        <div className="relative z-10 mx-0 flex flex-col items-center justify-center gap-12 bg-white/90 px-4 py-4 shadow-lg md:mx-0 md:-mt-12 md:flex-row md:px-0">
-          <div className="flex items-center gap-2 text-lg text-[#4a295e]">
-            <img src={organic} alt="organic" className="h-6 w-6" /> 100% Organic
-            Products
+        <div className="md: z-10 mx-0 flex flex-wrap items-center justify-center gap-6 bg-white/90 px-4 py-4 shadow-lg md:mx-0 md:flex-row md:gap-12 md:px-0">
+          <div className="flex items-center gap-2 text-sm text-[#4a295e] md:text-lg">
+            <img
+              src={organic}
+              alt="organic"
+              className="h-5 w-5 md:h-6 md:w-6"
+            />{" "}
+            100% <span className="">Organic Products</span>
           </div>
-          <div className="flex items-center gap-2 text-lg text-[#4a295e]">
-            <img src={baby} alt="baby" className="h-6 w-6" /> Recommended For
-            Babies
+          <div className="flex items-center gap-2 text-sm text-[#4a295e] md:text-lg">
+            <img src={baby} alt="baby" className="h-5 w-5 md:h-6 md:w-6" />
+            <span className="">Recommended</span> For Babies
           </div>
-          <div className="flex items-center gap-2 text-lg text-[#4a295e]">
-            <img src={milk} alt="milk" className="h-6 w-6" /> High Quality Raw
-            Milk
+          <div className="flex items-center gap-2 text-sm text-[#4a295e] md:text-lg">
+            <img src={milk} alt="milk" className="h-5 w-5 md:h-6 md:w-6" /> High
+            Quality <span className="">Raw Milk</span>
           </div>
         </div>
-        <div className="w-full bg-[#4a295e] py-4 text-center">
-          <span className="text-lg font-semibold tracking-[0.4em] text-white md:text-lg">
+        <div className="w-full bg-[#4a295e] px-4 py-4 text-center md:px-0">
+          <span className="text-sm font-semibold tracking-widest text-white md:text-lg md:tracking-[0.4em]">
             SOYA BASED <span className="text-[#fed365]">LACTOSE FREE</span>{" "}
             PRODUCTS FOR EVERYONE AT ANY AGE
           </span>

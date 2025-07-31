@@ -10,6 +10,12 @@ import cheeseImg from "../../asset/WEBSITE_ASSETS/PLAIN_CHEESE.jpg";
 import yogurtImg from "../../asset/WEBSITE_ASSETS/NATURAL_YOGURT.jpg";
 import { Button } from "flowbite-react";
 import LEFT_LEAF from "../../asset/WEBSITE_ASSETS/leaf-01.png";
+import { Swiper, SwiperSlide } from "swiper/react";
+import "swiper/css";
+import "swiper/css/navigation";
+import "swiper/css/pagination";
+import { Navigation, Pagination } from "swiper/modules";
+import { Link } from "react-router-dom";
 
 const products = [
   {
@@ -113,7 +119,6 @@ export const Products = ({ addToCart, cart, updateQuantity }) => {
       style={{
         backgroundImage: `url(${BG_PAPER})`,
         backgroundSize: "cover",
-        minHeight: "100vh",
         padding: "40px 0 100px",
         position: "relative",
       }}
@@ -132,29 +137,39 @@ export const Products = ({ addToCart, cart, updateQuantity }) => {
           }}
         />
       </div>
-      <div
-        style={{
-          display: "grid",
-          gridTemplateColumns: "repeat(5, 1fr)",
-          gap: "32px",
-          justifyContent: "center",
-          maxWidth: "1400px",
-          margin: "0 auto",
-        }}
-      >
-        {products.map((product, i) => (
-          <ProductCard
-            key={i}
-            {...product}
-            addToCart={addToCart}
-            cart={cart}
-            updateQuantity={updateQuantity}
-          />
-        ))}
+      <div style={{ maxWidth: "1400px", margin: "0 auto" }}>
+        <Swiper
+          modules={[Pagination]}
+          spaceBetween={10}
+          slidesPerView={3}
+          // navigation
+          pagination={{ clickable: true }}
+          style={{ padding: "32px 0", margin: "0 10px" }}
+          breakpoints={{
+            320: { slidesPerView: 2 },
+            640: { slidesPerView: 2 },
+            1024: { slidesPerView: 3 },
+            1400: { slidesPerView: 4 },
+          }}
+        >
+          {products.map((product, i) => (
+            <SwiperSlide key={i}>
+              <ProductCard
+                {...product}
+                addToCart={addToCart}
+                cart={cart}
+                updateQuantity={updateQuantity}
+              />
+            </SwiperSlide>
+          ))}
+        </Swiper>
       </div>
-      <Button className="bg_purple hover:bg_purple absolute -bottom-5 left-1/2 z-10 mt-10 -translate-x-1/2 text-white">
+      <Link
+        to={"/products"}
+        className="bg_purple hover:bg_purple absolute -bottom-5 left-1/2 z-10 mt-10 -translate-x-1/2 rounded-lg p-3 px-4 text-sm text-white md:text-base"
+      >
         More Products
-      </Button>
+      </Link>
       <img
         src={LEFT_LEAF}
         alt="left_leaf"

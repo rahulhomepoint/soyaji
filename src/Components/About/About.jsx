@@ -8,54 +8,62 @@ import lactoseFreeIcon from "../../asset/ICONS/lactose free.png";
 import { IoMdCheckboxOutline } from "react-icons/io";
 import RIGHT_LEAF from "../../asset/WEBSITE_ASSETS/leaf-01.png";
 
-
 export const About = () => {
   return (
-    <div className="relative overflow-hidden">
-      <section className="flex w-full items-center justify-center bg-white py-16">
-        <div className="flex w-full max-w-7xl flex-row items-center justify-center gap-12 px-6">
+    <div className="relative md:overflow-hidden">
+      <section className="flex flex-wrap items-center justify-center bg-white py-16 md:w-full">
+        <div className="flex max-w-7xl flex-wrap items-center gap-6 px-6 md:w-full md:justify-center md:gap-12">
           {/* Left Side: Images and About Us */}
           <div className="flex w-2/4 flex-col items-center gap-6">
             <div className="relative flex w-full flex-row items-center gap-6">
               <img
                 src={aboutImg1}
                 alt="Mother and daughter drinking plant-based milk"
-                className="h-96 w-80 rounded-xl object-cover shadow-lg"
+                className="h-70 rounded-xl object-cover shadow-lg md:h-96 md:w-80"
               />
-              <div className="bg_purple absolute top-62 left-70 flex h-42 w-42 items-center justify-center rounded-xl shadow-lg">
+              <div className="bg_purple absolute top-52 left-30 flex h-20 w-20 items-center justify-center rounded-xl shadow-lg md:top-62 md:left-70 md:h-42 md:w-42">
                 <img
                   src={organicIcon}
                   alt="Organic Icon"
                   className="h-20 w-20"
                 />
               </div>
-              <div className="ml-4 flex flex-col items-center">
-                <div className="w-full text-start">
+              <div className="ml-4 flex w-56 flex-col items-center">
+                <div className="w-32 text-start md:w-full">
                   {" "}
-                  <span className="mb-2 ml-1 text-start text-lg font-bold text-orange-500">
+                  <span className="mb-2 text-start text-lg font-bold text-orange-500 md:ml-1">
                     About Us
                   </span>
                 </div>
                 <img
                   src={aboutImg2}
                   alt="Mother and child with plant-based milk"
-                  className="mt-5 h-64 w-54 rounded-xl object-cover shadow-md"
+                  className="mt-5 h-54 w-64 rounded-xl object-cover shadow-md md:h-64 md:w-[200px]"
                 />
               </div>
             </div>
-            <div className="mr-14">
-              <p className="purple_text mt-1 w-2/4 items-start text-start text-xs">
+            <div className="hidden md:mr-14 md:inline-block">
+              <p className="purple_text mt-1 items-start text-start text-xs md:w-2/4">
                 Plant-based milk is rich in vitamins and minerals, and low in
                 cholesterol. It is also advised to people who have a slow
                 digestive system and in faster recovery the best of both worlds.
               </p>
             </div>
           </div>
+          <div className="md:mr-14 md:hidden">
+            <p className="purple_text mt-4 items-start text-start text-xs md:w-2/4">
+              Plant-based milk is rich in vitamins and minerals, and low in
+              cholesterol. It is also advised to people who have a slow
+              digestive system and in faster recovery the best of both worlds.
+            </p>
+          </div>
           {/* Right Side: Text and Features */}
-          <div className="flex w-1/3 flex-col gap-4">
-            <h2 className="BREAKSONG purple_text mb-2 text-4xl leading-tight">
+          <div className="mt-4 flex flex-col gap-4 md:mt-0 md:w-1/3">
+            <h2 className="BREAKSONG purple_text mb-2 text-2xl leading-tight md:text-4xl">
               Our Farm Creates <br />
-              <span className="text-4xl">The Best Dairy Products</span>
+              <span className="text-3xl md:text-4xl">
+                The Best Dairy Products
+              </span>
             </h2>
             <p className="purple_text mb-4 text-xs">
               Being agriculture graduates, we, the Soyawala team think that if
@@ -128,15 +136,16 @@ export const About = () => {
           </div>
         </div>
       </section>
-      <button className="absolute bottom-15 left-1/2 z-10 w-40 -translate-x-1/2 rounded-lg bg-orange-400 px-6 py-2 font-bold text-white transition-colors duration-200 hover:bg-orange-500">
-        Know More
-      </button>
-      <img
+      <div className="text-center">
+        <button className="z-10 mb-4 w-40 rounded-lg bg-orange-400 px-6 py-2 font-bold text-white transition-colors duration-200 hover:bg-orange-500 md:absolute md:bottom-15 md:left-1/2 md:mb-0 md:-translate-x-1/2">
+          Know More
+        </button>
+      </div>
+      {/* <img
         src={RIGHT_LEAF}
         alt="right_leaf"
         className="absolute -right-50 -bottom-18 w-80 -rotate-32"
-      />
-   
+      /> */}
     </div>
   );
 };

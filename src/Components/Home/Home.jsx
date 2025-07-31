@@ -4,6 +4,7 @@ import PopularProducts from "../PopularProducts/Popular_products";
 import { About } from "../About/About";
 import { AskForOrder } from "../AskForOrder/AskForOrder";
 import { Products } from "../future_products.jsx/Products";
+import { Footer } from "../Footer/Footer";
 
 /**
  * @param {{ addToCart: (product: any) => void, cart: Array<{ product: { name: string }, quantity: number }>, updateQuantity: (productName: string, newQuantity: number) => void }} props
@@ -25,6 +26,7 @@ export default function Home({ addToCart, cart, updateQuantity }) {
       />
       <About />
       <AskForOrder />
+      <Footer />
     </>
   );
 }

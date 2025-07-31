@@ -50,3 +50,25 @@ body {
 .bg_purple {
   background-color: #4a295e;
 }
+
+.active {
+  font-weight: 600;
+  color: #4a295e;
+  border-bottom: 2px solid #4a295e;
+}
+
+/* Overview component background styles */
+.overview-container {
+  background-image: none;
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+
+/* Show background image only on desktop (md and larger screens) */
+@media (min-width: 768px) {
+  .overview-container {
+    background-image: url("./asset/BG_PAPER.png");
+    background-size: 100%;
+    background-position: center;
+  }
+}

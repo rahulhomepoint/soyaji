@@ -14,6 +14,7 @@ import LACTOSE_FREE_ICON from "../../asset/ICONS/lactose free.png";
 import { List, ListItem } from "flowbite-react";
 import RIGHT_LEAF from "../../asset/WEBSITE_ASSETS/leaf-01.png";
 import LEFT_LEAF from "../../asset/WEBSITE_ASSETS/leaf-02.png";
+import bollet from "../../asset/WEBSITE_ASSETS/bottle_mock.png";
 
 // Register ScrollTrigger plugin
 gsap.registerPlugin(ScrollTrigger);
@@ -115,35 +116,24 @@ export const Overview = () => {
   return (
     <div
       ref={containerRef}
+      className="overview-container bg-none !pt-5 md:bg-center"
       style={{
-        backgroundImage: `url(${BG_PAPER})`,
-        backgroundSize: "contain",
-        backgroundPosition: "center",
         minHeight: "100vh",
         width: "100%",
-        padding: "40px 0",
         boxSizing: "border-box",
-        backgroundSize: "100%",
-        backgroundRepeat: "no-repeat",
         position: "relative",
         overflow: "hidden",
       }}
     >
       <div
+        className="flex flex-wrap items-center justify-between gap-2 md:max-w-[1200px] md:gap-0"
         style={{
-          display: "flex",
-          justifyContent: "center",
-          //   alignItems: "center",
-          maxWidth: 1200,
+          // maxWidth: 1200,
           margin: "0 auto",
-          gap: 0,
         }}
       >
         {/* Left: Benefits */}
-        <div
-          style={{ flex: 1, display: "flex", flexDirection: "column", gap: 32 }}
-          className="mt-2"
-        >
+        <div className="mt-0 flex flex-wrap justify-center gap-1 md:mt-2 md:flex-col md:gap-10">
           <BenefitItem
             icon={SOYA_MILK_ICON}
             title="Soya Milk"
@@ -174,9 +164,17 @@ export const Overview = () => {
             color="#F6A623"
             desc="Lower in saturated fat and calories than those made with coconut cream or milk"
           />
+          <BenefitItem
+            icon={ICECREAM_ICON}
+            title="Ice Cream"
+            color="#F6A623"
+            desc="Lower in saturated fat and calories than those made with coconut cream or milk"
+            large={true}
+          />
         </div>
         {/* Center: Bottle as background */}
-        <div
+        {/* <div
+          className="!hidden md:!flex"
           style={{
             flex: 2,
             display: "flex",
@@ -190,36 +188,31 @@ export const Overview = () => {
             height: 420,
             width: "100%",
           }}
-        >
-          {/* No <img> here, bottle is background */}
-        </div>
+        > */}
+        {/* No <img> here, bottle is background */}
+        {/* </div> */}
         {/* Right: Features */}
         <div
           style={{
-            flex: 1,
             color: "#5B3A7A",
-            fontWeight: 500,
-            fontSize: 22,
-            display: "flex",
-            flexDirection: "column",
-            gap: 16,
           }}
+          className="flex flex-1 flex-col md:gap-16 md:pl-[200px]"
         >
-          <div className="mb-10 text-xl font-bold text-[#5B3A7A]">
+          <div className="mt-4 mb-8 text-center text-xl font-bold text-[#5B3A7A] md:mt-0 md:text-left">
             We Bring The Best Soya
             <br />
             Based Milk Products right
             <br />
             at your door steps.
           </div>
-          <List className="list-outside p-2 text-[#5B3A7A] *:mb-4 *:text-lg">
+          <List className="list-outside p-2 *:mb-4 *:ml-6 *:text-sm *:!text-[#5B3A7A] *:md:ml-0 *:md:text-lg">
             <ListItem>Cold pressed & processed organically</ListItem>
             <ListItem>No preservatives added</ListItem>
             <ListItem>Rated 5 stars. Over 1 million reviews</ListItem>
             <ListItem>In-house factory</ListItem>
             <ListItem>150+ Delivery locations</ListItem>
           </List>
-          <div style={{ display: "flex", gap: 16, marginTop: 36 }}>
+          <div className="mb-6 ml-4 flex md:mt-9 md:mb-0 md:ml-0 md:gap-16">
             {/* You can add icons for sugar free, gluten free, lactose free here if needed */}
             <img src={SUGAR_FREE_ICON} className="h-14 w-14" alt="sugar free" />
             <img
@@ -239,28 +232,52 @@ export const Overview = () => {
         ref={rightLeafRef}
         src={RIGHT_LEAF}
         alt="right_leaf"
-        className="absolute -right-46 -bottom-18 w-[250px]"
+        className="absolute -right-26 -bottom-18 w-[150px] md:-right-46 md:w-[250px]"
       />
       <img
         ref={leftLeafRef}
         src={LEFT_LEAF}
         alt="left_leaf"
-        className="absolute bottom-50 -left-30 w-[250px]"
+        className="absolute bottom-50 -left-15 w-[150px] md:-left-30 md:w-[250px]"
       />
     </div>
   );
 };
 
-const BenefitItem = ({ icon, title, color, desc }) => (
-  <div style={{ display: "flex", gap: 16 }} className="items-center">
-    <img
-      src={icon}
-      alt={title}
-      style={{ width: 36, height: 36, objectFit: "fill", marginTop: 4 }}
-    />
-    <div>
-      <div style={{ color, fontWeight: 700, fontSize: 22 }}>{title}</div>
-      <div style={{ color: "#5B3A7A", fontSize: 17 }}>{desc}</div>
-    </div>
+const BenefitItem = ({ icon, title, color, desc, large }) => (
+  <div
+    className={`:md:w-48 flex w-44 flex-col items-center gap-2 ${large == undefined ? "border" : null} border-fuchsia-800 p-2 md:w-1/2 md:flex-row md:gap-6 md:border-none md:p-0`}
+  >
+    {large == undefined ? (
+      <img
+        src={icon}
+        alt={title}
+        style={{ objectFit: "fill", marginTop: 4 }}
+        className="h-9 w-9 md:h-9 md:w-9"
+      />
+    ) : null}
+    {large == undefined ? (
+      <div>
+        <div
+          style={{ color, fontWeight: 700 }}
+          className="text-base md:!text-[22px]"
+        >
+          {title}
+        </div>
+        <div style={{ color: "#5B3A7A" }} className="!text-xs md:!text-[17px]">
+          {desc}
+        </div>
+      </div>
+    ) : null}
+    {large != undefined ? (
+      <div>
+        <img
+          src={bollet}
+          alt=""
+          srcset=""
+          className="h-34 w-28 bg-contain md:hidden"
+        />
+      </div>
+    ) : null}
   </div>
 );

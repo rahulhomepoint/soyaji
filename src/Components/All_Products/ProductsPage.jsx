@@ -115,12 +115,7 @@ const categories = [
   "Ice Cream",
   "Namkeen",
 ];
-const sortOptions = [
-  "Popularity",
-  "Price -- Low to High",
-  "Price -- High to Low",
-  "Discount",
-];
+const sortOptions = ["Popularity", "Low to High", "High to Low", "Discount"];
 const discountOptions = [
   "50% or more",
   "40% or more",
@@ -192,13 +187,12 @@ export default function ProductsPage({
   return (
     <div className="min-h-screen bg-[#f7ede2]">
       <div
-        className={`flex items-center justify-center`}
+        className={`flex h-[100px] items-center justify-center md:h-[200px]`}
         style={{
           backgroundImage: `url(${headerBG})`,
           backgroundSize: "cover",
           backgroundPosition: "center",
           backgroundRepeat: "no-repeat",
-          height: "200px",
         }}
       >
         <h1 className="text-2xl font-bold text-white">ALL PRODUCTS</h1>
@@ -206,9 +200,9 @@ export default function ProductsPage({
       {/* Top Navigation Bar */}
       <div className="py-3">
         <div className="mx-auto flex max-w-7xl flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
-          <div className="flex w-full flex-wrap items-center justify-between gap-4">
+          <div className="flex w-full flex-wrap items-center justify-between gap-4 p-2">
             <h1 className="purple_text text-2xl font-bold">All Products</h1>
-            <div className="flex items-center gap-2">
+            <div className="hidden items-center gap-2 md:inline-flex">
               <span className="purple_text text-sm font-medium opacity-70">
                 Buy Dairy Products:
               </span>
@@ -248,11 +242,11 @@ export default function ProductsPage({
         </div>
       </div>
 
-      <div className="mx-auto max-w-7xl py-6">
-        <div className="flex flex-col gap-8 lg:flex-row">
+      <div className="mx-auto max-w-7xl md:py-6">
+        <div className="flex flex-col md:gap-8 lg:flex-row">
           {/* Left Sidebar - Filters */}
           <div className="flex-shrink-0 lg:w-64">
-            <div className="border border-gray-200 bg-white shadow-sm">
+            <div className="hidden border border-gray-200 bg-white shadow-sm md:inline">
               <h2 className="mb-4 border-b border-gray-200 p-3 text-lg font-semibold text-yellow-400">
                 Filters
               </h2>
@@ -363,7 +357,7 @@ export default function ProductsPage({
           <div className="flex-1">
             {/* Sort Options */}
             <div className="mb-6 border-b border-purple-800 p-3">
-              <div className="flex flex-wrap items-center gap-4">
+              <div className="hidden flex-wrap items-center gap-1 text-xs md:inline-flex md:gap-4 md:text-base">
                 <span className="purple_text font-bold">Sort By:</span>
                 {sortOptions.map((option) => (
                   <button
@@ -382,7 +376,7 @@ export default function ProductsPage({
             </div>
 
             {/* Product Grid */}
-            <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+            <div className="grid grid-cols-2 gap-2 p-1 sm:grid-cols-2 md:gap-6 lg:grid-cols-3 xl:grid-cols-4">
               {filteredAndSortedProducts.map((product, index) => (
                 <ProductCard
                   key={index}
