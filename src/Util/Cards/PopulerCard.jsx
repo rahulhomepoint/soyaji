@@ -1,9 +1,11 @@
 import React, { useState } from "react";
+import { Link } from "react-router-dom";
 
 /**
- * @param {{ title: string, image: string, price: number, oldPrice: number, addToCart: (product: any, event?: any) => void, cart: Array<{ product: { name: string }, quantity: number }>, updateQuantity: (productName: string, newQuantity: number) => void }} props
+ * @param {{ id: string, title: string, image: string, price: number, oldPrice: number, addToCart: (product: any, event?: any) => void, cart: Array<{ product: { name: string }, quantity: number }>, updateQuantity: (productName: string, newQuantity: number) => void }} props
  */
 export const PopulerCard = ({
+  id,
   title,
   image,
   price,
@@ -50,23 +52,27 @@ export const PopulerCard = ({
       className="mx-auto flex max-w-xs flex-col items-center overflow-hidden border-2 border-yellow-300 bg-[#ede6e1] shadow-lg"
       style={{ boxShadow: "0 4px 16px rgba(124,77,158,0.15)" }}
     >
-      <div className="relative flex h-34 w-full items-center justify-center overflow-hidden bg-[#7c4d9e] md:h-64">
-        {/* Blurred placeholder */}
-        <div
-          className={`absolute inset-0 h-full w-full bg-gray-200 transition-all duration-500 ${loaded ? "opacity-0" : "opacity-100 blur-md"}`}
-        />
-        {/* Actual image */}
-        <img
-          src={image}
-          alt={title}
-          className={`h-full w-full object-cover transition-all duration-500 ${loaded ? "blur-0 opacity-100" : "opacity-0 blur-md"}`}
-          onLoad={() => setLoaded(true)}
-        />
-      </div>
+      <Link to={`/product/${id}`} className="block w-full">
+        <div className="relative flex h-34 w-full items-center justify-center overflow-hidden bg-[#7c4d9e] md:h-64">
+          {/* Blurred placeholder */}
+          <div
+            className={`absolute inset-0 h-full w-full bg-gray-200 transition-all duration-500 ${loaded ? "opacity-0" : "opacity-100 blur-md"}`}
+          />
+          {/* Actual image */}
+          <img
+            src={image}
+            alt={title}
+            className={`h-full w-full object-cover transition-all duration-500 ${loaded ? "blur-0 opacity-100" : "opacity-0 blur-md"}`}
+            onLoad={() => setLoaded(true)}
+          />
+        </div>
+      </Link>
       <div className="w-full py-4 text-center">
-        <h2 className="purple_text mb-2 font-bold tracking-wide md:text-xl">
-          {title}
-        </h2>
+        <Link to={`/product/${id}`} className="block">
+          <h2 className="purple_text mb-2 font-bold tracking-wide transition-colors hover:text-purple-600 md:text-xl">
+            {title}
+          </h2>
+        </Link>
         <div className="mb-3 flex items-center justify-center gap-3">
           <span className="purple_text">₹{price}.00</span>
           <span className="text-base text-gray-500 line-through">

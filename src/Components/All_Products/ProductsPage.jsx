@@ -2,127 +2,16 @@ import React, { useState } from "react";
 import { Toast, ToastToggle } from "flowbite-react";
 import { HiCheck } from "react-icons/hi";
 import { ProductCard } from "../../Util/Cards/ProductCard";
-import BG_PAPER from "../../asset/WEBSITE_ASSETS/BG_PAPER_1.png";
-import curdImg from "../../asset/WEBSITE_ASSETS/CURD.avif";
-import soyaImg from "../../asset/WEBSITE_ASSETS/PLAIN_TOFU.jpg";
-import soyaMilkImg from "../../asset/WEBSITE_ASSETS/RAW_SOYA_MILK.jpg";
-import vanillaImg from "../../asset/WEBSITE_ASSETS/VANILLA_ICE_CREAM.jpg";
-import chocolateImg from "../../asset/WEBSITE_ASSETS/CHOCKLATE_SOYA_MILK.jpg";
-import cheeseImg from "../../asset/WEBSITE_ASSETS/PLAIN_CHEESE.jpg";
-import yogurtImg from "../../asset/WEBSITE_ASSETS/NATURAL_YOGURT.jpg";
-import chakliImg from "../../asset/WEBSITE_ASSETS/soya-chakli.jpg";
-import herbalTofuImg from "../../asset/WEBSITE_ASSETS/HARBAL_TOFU.jpg";
+import {
+  allProducts,
+  categories,
+  sortOptions,
+  discountOptions,
+} from "../../Util/productsData";
 import { ChevronDownIcon, ChevronUpIcon } from "@heroicons/react/24/outline";
 import headerBG from "../../asset/BANNER_01.jpg";
 
-const products = [
-  {
-    image: soyaImg,
-    name: "Plain Soya Tofu",
-    unit: "200 g",
-    price: 100,
-    description:
-      "100% Veg Soya Paneer, Rich source of Protein and Iron, Low in fat and cholesterol free.",
-    button: "ADD",
-    category: "Tofu",
-    discount: 20,
-  },
-  {
-    image: soyaMilkImg,
-    name: "Raw Soya Milk",
-    unit: "1 ltr",
-    price: 148,
-    description:
-      "Enriched with vital nutrients of soya. It offers a delightful taste with various health benefits.",
-    button: "ADD",
-    category: "Milk",
-    discount: 15,
-  },
-  {
-    image: curdImg,
-    name: "Plain Curd Lactose Free",
-    unit: "400 g",
-    price: 100,
-    description:
-      "Perfect combination of health & taste. It provides calcium for strong bones and teeth.",
-    button: "ADD",
-    category: "Curd",
-    discount: 10,
-  },
-  {
-    image: vanillaImg,
-    name: "Vanilla Ice Cream",
-    unit: "700 ml",
-    price: 210,
-    description:
-      "Rich Creamy Vanilla Dessert. Made from best ingredients: Fresh 100% soya milk.",
-    button: "ADD",
-    category: "Ice Cream",
-    discount: 25,
-  },
-  {
-    image: cheeseImg,
-    name: "Plain Cheese",
-    unit: "200 g",
-    price: 420,
-    description:
-      "Perfect option for those with lactose intolerance, enjoy cheese without digestive discomfort.",
-    button: "ADD",
-    category: "Cheese",
-    discount: 30,
-  },
-  {
-    image: yogurtImg,
-    name: "Natural Yogurt",
-    unit: "400 g",
-    price: 250,
-    description:
-      "Rich in protein | Low fat content. Made with natural ingredients. Perfect blend of taste & nutrition.",
-    button: "ADD",
-    category: "Yogurt",
-    discount: 20,
-  },
-  {
-    image: chakliImg,
-    name: "Soya Chakli",
-    unit: "100 g",
-    price: 159,
-    description:
-      "Soya sticks, or boondi. Made with low-carb ingredients, healthy snack option for any time.",
-    button: "ADD",
-    category: "Namkeen",
-    discount: 15,
-  },
-  {
-    image: herbalTofuImg,
-    name: "Herbal Tofu",
-    unit: "200 g",
-    price: 110,
-    description:
-      "Easy to digest. High in protein and very low in fat. Great substitute of meat.",
-    button: "ADD",
-    category: "Tofu",
-    discount: 10,
-  },
-];
-
-const categories = [
-  "Cheese",
-  "Milk",
-  "Tofu",
-  "Yogurt",
-  "Curd",
-  "Ice Cream",
-  "Namkeen",
-];
-const sortOptions = ["Popularity", "Low to High", "High to Low", "Discount"];
-const discountOptions = [
-  "50% or more",
-  "40% or more",
-  "30% or more",
-  "20% or more",
-  "10% or more",
-];
+const products = allProducts;
 
 /**
  * @param {{ addToCart: (product: any, event?: any) => void, cart: Array<{ product: { name: string }, quantity: number }>, updateQuantity: (productName: string, newQuantity: number) => void, toast: { show: boolean, message: string, position: { x: number, y: number } }, hideToast: () => void }} props
@@ -379,7 +268,7 @@ export default function ProductsPage({
             <div className="grid grid-cols-2 gap-2 p-1 sm:grid-cols-2 md:gap-6 lg:grid-cols-3 xl:grid-cols-4">
               {filteredAndSortedProducts.map((product, index) => (
                 <ProductCard
-                  key={index}
+                  key={product.id || index}
                   {...product}
                   addToCart={addToCart}
                   cart={cart}

@@ -1,9 +1,11 @@
 import React, { useState } from "react";
+import { Link } from "react-router-dom";
 
 /**
- * @param {{ image: string, name: string, unit: string, price: number, description: string, button: string, addToCart: (product: any, event?: any) => void, cart: Array<{ product: { name: string }, quantity: number }>, updateQuantity: (productName: string, newQuantity: number) => void }} props
+ * @param {{ id: string, image: string, name: string, unit: string, price: number, description: string, button: string, addToCart: (product: any, event?: any) => void, cart: Array<{ product: { name: string }, quantity: number }>, updateQuantity: (productName: string, newQuantity: number) => void }} props
  */
 export const ProductCard = ({
+  id,
   image,
   name,
   unit,
@@ -51,24 +53,28 @@ export const ProductCard = ({
       className="mx-auto flex max-w-xs flex-col justify-between border border-[#4a295e] bg-[#f7ede2] shadow-md"
       style={{ fontFamily: "median-tomato" }}
     >
-      <div className="relative mb-3 overflow-hidden">
-        {/* Blurred placeholder */}
-        <div
-          className={`absolute inset-0 h-full w-full bg-gray-200 transition-all duration-500 ${loaded ? "opacity-0" : "opacity-100 blur-md"}`}
-        />
-        {/* Actual image */}
-        <img
-          src={image}
-          alt={name}
-          className={`h-34 w-full rounded-b-2xl border-b border-[#4a295e] object-cover transition-all duration-500 md:h-54 ${loaded ? "blur-0 opacity-100" : "opacity-0 blur-md"}`}
-          onLoad={() => setLoaded(true)}
-        />
-      </div>
+      <Link to={`/product/${id}`} className="block">
+        <div className="relative mb-3 overflow-hidden">
+          {/* Blurred placeholder */}
+          <div
+            className={`absolute inset-0 h-full w-full bg-gray-200 transition-all duration-500 ${loaded ? "opacity-0" : "opacity-100 blur-md"}`}
+          />
+          {/* Actual image */}
+          <img
+            src={image}
+            alt={name}
+            className={`h-34 w-full rounded-b-2xl border-b border-[#4a295e] object-cover transition-all duration-500 md:h-54 ${loaded ? "blur-0 opacity-100" : "opacity-0 blur-md"}`}
+            onLoad={() => setLoaded(true)}
+          />
+        </div>
+      </Link>
       <div className="flex flex-1 flex-col justify-between p-3">
         <div>
-          <div className="purple_text bold-tomato mb-1 line-clamp-1 leading-tight md:text-lg">
-            {name}
-          </div>
+          <Link to={`/product/${id}`} className="block">
+            <div className="purple_text bold-tomato mb-1 line-clamp-1 leading-tight transition-colors hover:text-purple-600 md:text-lg">
+              {name}
+            </div>
+          </Link>
           <div className="purple_text mb-2 text-sm opacity-80 md:text-base">
             Unit - <span className="text-sm">{unit}</span>
           </div>

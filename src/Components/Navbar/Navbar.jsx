@@ -20,11 +20,25 @@ import { Link, useLocation } from "react-router-dom";
  */
 const SoyajiNavbar = ({ cart }) => {
   const [showSearch, setShowSearch] = useState(false);
+  const [visible, setVisible] = useState(true);
   const location = useLocation();
+  React.useEffect(() => {
+    let lastScrollY = window.scrollY;
+    const handleScroll = () => {
+      if (window.scrollY > lastScrollY && window.scrollY > 50) {
+        setVisible(false); // scrolling down
+      } else {
+        setVisible(true); // scrolling up
+      }
+      lastScrollY = window.scrollY;
+    };
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
   return (
     <Navbar
       fluid
-      className="sticky top-0 z-50 w-full py-2 sm:!px-20 dark:!bg-white"
+      className={`sticky top-0 z-50 w-full py-2 transition-transform duration-300 sm:!px-20 dark:!bg-white ${visible ? "translate-y-0" : "-translate-y-full"}`}
     >
       {/* Logo and Brand */}
       <NavbarBrand href="/">
@@ -93,7 +107,10 @@ const SoyajiNavbar = ({ cart }) => {
         <button className="hidden text-purple-900 hover:text-orange-600 md:block">
           <UserIcon className="h-6 w-6" />
         </button>
-        <button className="relative text-purple-900 hover:text-orange-600">
+        <Link
+          to="/cart"
+          className="relative text-purple-900 hover:text-orange-600"
+        >
           <ShoppingCartIcon className="h-6 w-6" />
           <span className="absolute -top-3 -right-3">
             <Badge
@@ -104,7 +121,7 @@ const SoyajiNavbar = ({ cart }) => {
               {cart.reduce((sum, item) => sum + item.quantity, 0)}
             </Badge>
           </span>
-        </button>
+        </Link>
       </div>
     </Navbar>
   );

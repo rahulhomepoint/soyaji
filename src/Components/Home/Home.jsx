@@ -20,6 +20,7 @@ export default function Home({ addToCart, cart, updateQuantity }) {
         updateQuantity={updateQuantity}
       />
       <Products
+        count={4}
         addToCart={addToCart}
         cart={cart}
         updateQuantity={updateQuantity}

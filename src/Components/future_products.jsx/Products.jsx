@@ -14,11 +14,12 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
-import { Navigation, Pagination } from "swiper/modules";
+import { Autoplay, Navigation, Pagination } from "swiper/modules";
 import { Link } from "react-router-dom";
 
 const products = [
   {
+    id: "soya-tofu",
     image: curdImg,
     name: "Plain Soya Tofu",
     unit: "200 g",
@@ -28,6 +29,7 @@ const products = [
     button: "ADD",
   },
   {
+    id: "soya-milk",
     image: soyaImg,
     name: "Raw Soya Milk",
     unit: "1 ltr",
@@ -37,6 +39,7 @@ const products = [
     button: "ADD",
   },
   {
+    id: "curd",
     image: soyaMilkImg,
     name: "Plain Curd Lactose Free",
     unit: "400 g",
@@ -46,6 +49,7 @@ const products = [
     button: "ADD",
   },
   {
+    id: "vanilla-ice-cream",
     image: vanillaImg,
     name: "Vanilla Ice Cream",
     unit: "700 ml",
@@ -55,6 +59,7 @@ const products = [
     button: "ADD",
   },
   {
+    id: "chocolate-soya-milk",
     image: chocolateImg,
     name: "Chocolate Soya Milk",
     unit: "400 g",
@@ -64,6 +69,7 @@ const products = [
     button: "ADD",
   },
   {
+    id: "cheese",
     image: cheeseImg,
     name: "Plain Cheese",
     unit: "200 g",
@@ -73,6 +79,7 @@ const products = [
     button: "ADD",
   },
   {
+    id: "yogurt",
     image: yogurtImg,
     name: "Natural Yogurt",
     unit: "400 g",
@@ -82,6 +89,7 @@ const products = [
     button: "ADD",
   },
   {
+    id: "soya-chakli",
     image: vanillaImg,
     name: "Soya Chakli",
     unit: "100 g",
@@ -91,6 +99,7 @@ const products = [
     button: "ADD",
   },
   {
+    id: "herbal-tofu",
     image: chocolateImg,
     name: "Herbal Tofu",
     unit: "200 g",
@@ -100,6 +109,7 @@ const products = [
     button: "ADD",
   },
   {
+    id: "strawberry-ice-cream",
     image: soyaMilkImg,
     name: "Strawberry Ice Cream",
     unit: "700 ml",
@@ -113,43 +123,54 @@ const products = [
 /**
  * @param {{ addToCart: (product: any) => void, cart: Array<{ product: { name: string }, quantity: number }>, updateQuantity: (productName: string, newQuantity: number) => void }} props
  */
-export const Products = ({ addToCart, cart, updateQuantity }) => {
+export const Products = ({
+  addToCart,
+  cart,
+  updateQuantity,
+  leaf,
+  count,
+  backgroundImage,
+}) => {
   return (
     <div
+      className={backgroundImage === undefined ? "pt-24" : "!bg-none"}
       style={{
         backgroundImage: `url(${BG_PAPER})`,
         backgroundSize: "cover",
-        padding: "40px 0 100px",
+
         position: "relative",
       }}
     >
-      <div style={{ textAlign: "center", marginBottom: "32px" }}>
-        <h2 className="median-tomato purple_text text-3xl">
-          Our Dairy Products For{" "}
-          <span className="extrabold-tomato">Healthy Living</span>
-        </h2>
-        <hr
-          style={{
-            width: "60%",
-            margin: "16px auto 0",
-            border: "none",
-            borderTop: "2px solid #4a295e",
-          }}
-        />
-      </div>
+      {!backgroundImage ? (
+        <div style={{ textAlign: "center", marginBottom: "32px" }}>
+          <h2 className="median-tomato purple_text text-3xl">
+            Our Dairy Products For{" "}
+            <span className="extrabold-tomato">Healthy Living</span>
+          </h2>
+          <hr
+            style={{
+              width: "60%",
+              margin: "16px auto 0",
+              border: "none",
+              borderTop: "2px solid #4a295e",
+            }}
+          />
+        </div>
+      ) : null}
       <div style={{ maxWidth: "1400px", margin: "0 auto" }}>
         <Swiper
-          modules={[Pagination]}
+          modules={[Pagination, Autoplay]}
           spaceBetween={10}
           slidesPerView={3}
           // navigation
+          autoplay={{ delay: 2500, disableOnInteraction: false }}
           pagination={{ clickable: true }}
           style={{ padding: "32px 0", margin: "0 10px" }}
           breakpoints={{
             320: { slidesPerView: 2 },
             640: { slidesPerView: 2 },
             1024: { slidesPerView: 3 },
-            1400: { slidesPerView: 4 },
+            1400: { slidesPerView: count },
           }}
         >
           {products.map((product, i) => (
@@ -164,17 +185,22 @@ export const Products = ({ addToCart, cart, updateQuantity }) => {
           ))}
         </Swiper>
       </div>
-      <Link
-        to={"/products"}
-        className="bg_purple hover:bg_purple absolute -bottom-5 left-1/2 z-10 mt-10 -translate-x-1/2 rounded-lg p-3 px-4 text-sm text-white md:text-base"
-      >
-        More Products
-      </Link>
-      <img
-        src={LEFT_LEAF}
-        alt="left_leaf"
-        className="absolute -bottom-86 -left-20 z-20 w-80 rotate-38 rotate-x-15 -rotate-y-30"
-      />
+      {!leaf ? (
+        <>
+          {" "}
+          <Link
+            to={"/products"}
+            className="bg_purple hover:bg_purple absolute -bottom-5 left-1/2 z-10 mt-10 -translate-x-1/2 rounded-lg p-3 px-4 text-sm text-white md:text-base"
+          >
+            More Products
+          </Link>
+          <img
+            src={LEFT_LEAF}
+            alt="left_leaf"
+            className="absolute -bottom-86 -left-20 z-20 w-80 rotate-38 rotate-x-15 -rotate-y-30"
+          />
+        </>
+      ) : null}
     </div>
   );
 };

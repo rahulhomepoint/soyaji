@@ -13,10 +13,17 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Home from "./Components/Home/Home";
 // @ts-expect-error: No declaration file for JSX import from JS file
 import ProductsPage from "./Components/All_Products/ProductsPage";
+// @ts-expect-error: No declaration file for JSX import from JS file
+import ProductDetails from "./Components/ProductDetails/ProductDetails";
+// @ts-expect-error: No declaration file for JSX import from JS file
+import Cart from "./Components/Cart";
+// @ts-expect-error: No declaration file for JSX import from JS file
+import Checkout from "./Components/Checkout";
 import { useState } from "react";
 
 // Product type
 interface Product {
+  id?: string;
   image: string;
   name: string;
   unit: string;
@@ -25,6 +32,17 @@ interface Product {
   button: string;
   category: string;
   discount: number;
+  detailedDescription?: string;
+  benefits?: string[];
+  nutritionalInfo?: Record<string, string>;
+  highlight?: string[];
+  keyFeatures?: string[];
+  rating?: number;
+  reviews?: number;
+  subcategory?: string;
+  expire?: string;
+  wigthType?: string[];
+  oldPrice?: number;
 }
 // Cart item type
 interface CartItem {
@@ -129,12 +147,29 @@ export default function App() {
             />
           }
         />
+        <Route
+          path="/product/:productId"
+          element={
+            <ProductDetails
+              addToCart={addToCart}
+              cart={cart}
+              updateQuantity={updateQuantity}
+              toast={toast}
+              hideToast={hideToast}
+            />
+          }
+        />
         <Route path="/overview" element={<Overview />} />
         <Route path="/about" element={<About />} />
         <Route path="/order" element={<AskForOrder />} />
+        <Route
+          path="/cart"
+          element={<Cart cart={cart} updateQuantity={updateQuantity} />}
+        />
+        <Route path="/checkout" element={<Checkout />} />
         {/* Add more routes as needed */}
       </Routes>
-      {/* <Footer /> */}
+      <Footer />
     </BrowserRouter>
   );
 }

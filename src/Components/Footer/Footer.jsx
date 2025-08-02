@@ -33,7 +33,7 @@ export const Footer = () => {
             flexDirection: "row",
             justifyContent: "space-between",
             alignItems: "flex-start",
-            padding: "40px 60px 0 60px",
+            padding: "40px 30px 0 30px",
             alignItems: "center",
             flexWrap: "wrap",
           }}
@@ -63,10 +63,10 @@ export const Footer = () => {
             }}
           >
             <div style={{ marginBottom: 8 }}>
-              <span>Location</span> &nbsp; Seal Lane, Kolkata
+              <span>Location :- </span> &nbsp; Seal Lane, Kolkata
             </div>
             <div style={{ marginBottom: 8 }}>
-              <span>Mobile</span> &nbsp; +91 810037780
+              <span>Mobile :- </span> &nbsp; +91 810037780
             </div>
             <div>
               <span>Email</span> &nbsp; sales@soyawala.com

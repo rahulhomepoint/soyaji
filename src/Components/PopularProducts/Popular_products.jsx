@@ -50,6 +50,7 @@ const PopularProducts = ({ addToCart, cart, updateQuantity }) => (
         {popularProducts.map((product, idx) => (
           <SwiperSlide key={idx}>
             <PopulerCard
+              id={product.id}
               title={product.title}
               image={product.image}
               price={product.price}
