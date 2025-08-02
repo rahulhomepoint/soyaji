@@ -1,14 +1,6 @@
 import React, { useState } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { IoIosRemove, IoIosAdd } from "react-icons/io";
-import {
-  Modal,
-  Label,
-  TextInput,
-  Select,
-  Textarea,
-  Button,
-} from "flowbite-react";
 
 export default function Checkout() {
   const location = useLocation();
@@ -315,88 +307,117 @@ export default function Checkout() {
         </div>
       </div>
 
-      {/* Flowbite React Modal for adding new address */}
-      <Modal show={openModal} onClose={() => setOpenModal(false)}>
-        <Modal.Header className="purple_text">Add New Address</Modal.Header>
-        <Modal.Body>
-          <div className="space-y-4">
-            <div>
-              <div className="mb-2 block">
-                <Label htmlFor="name" value="Full Name" />
-              </div>
-              <TextInput
-                id="name"
-                name="name"
-                value={newAddress.name}
-                onChange={handleInputChange}
-                required
-              />
+      {/* Custom Modal for adding new address */}
+      {openModal && (
+        <div className="bg-opacity-8 fixed inset-0 z-50 flex items-center justify-center bg-gray-400/40 backdrop-blur-sm">
+          <div className="relative w-full max-w-md rounded-lg bg-white p-6 shadow-lg">
+            <div className="purple_text mb-4 text-lg font-bold">
+              Add New Address
             </div>
-            <div>
-              <div className="mb-2 block">
-                <Label htmlFor="type" value="Address Type" />
+            <form
+              onSubmit={(e) => {
+                e.preventDefault();
+                handleAddAddress();
+              }}
+              className="space-y-4"
+            >
+              <div>
+                <label htmlFor="name" className="mb-2 block font-medium">
+                  Full Name
+                </label>
+                <input
+                  id="name"
+                  name="name"
+                  className="w-full rounded border px-3 py-2"
+                  value={newAddress.name}
+                  onChange={handleInputChange}
+                  required
+                />
               </div>
-              <Select
-                id="type"
-                name="type"
-                value={newAddress.type}
-                onChange={handleInputChange}
-                required
-              >
-                <option value="HOME">HOME</option>
-                <option value="WORK">WORK</option>
-                <option value="OTHER">OTHER</option>
-              </Select>
-            </div>
-            <div>
-              <div className="mb-2 block">
-                <Label htmlFor="phone" value="Phone Number" />
+              <div>
+                <label htmlFor="type" className="mb-2 block font-medium">
+                  Address Type
+                </label>
+                <select
+                  id="type"
+                  name="type"
+                  className="w-full rounded border px-3 py-2"
+                  value={newAddress.type}
+                  onChange={handleInputChange}
+                  required
+                >
+                  <option value="HOME">HOME</option>
+                  <option value="WORK">WORK</option>
+                  <option value="OTHER">OTHER</option>
+                </select>
               </div>
-              <TextInput
-                id="phone"
-                name="phone"
-                type="tel"
-                value={newAddress.phone}
-                onChange={handleInputChange}
-                required
-              />
-            </div>
-            <div>
-              <div className="mb-2 block">
-                <Label htmlFor="address" value="Address" />
+              <div>
+                <label htmlFor="phone" className="mb-2 block font-medium">
+                  Phone Number
+                </label>
+                <input
+                  id="phone"
+                  name="phone"
+                  type="tel"
+                  className="w-full rounded border px-3 py-2"
+                  value={newAddress.phone}
+                  onChange={handleInputChange}
+                  required
+                />
               </div>
-              <Textarea
-                id="address"
-                name="address"
-                value={newAddress.address}
-                onChange={handleInputChange}
-                rows={3}
-                required
-              />
-            </div>
-            <div>
-              <div className="mb-2 block">
-                <Label htmlFor="pincode" value="Pincode" />
+              <div>
+                <label htmlFor="address" className="mb-2 block font-medium">
+                  Address
+                </label>
+                <textarea
+                  id="address"
+                  name="address"
+                  className="w-full rounded border px-3 py-2"
+                  value={newAddress.address}
+                  onChange={handleInputChange}
+                  rows={3}
+                  required
+                />
               </div>
-              <TextInput
-                id="pincode"
-                name="pincode"
-                value={newAddress.pincode}
-                onChange={handleInputChange}
-                required
-              />
-            </div>
+              <div>
+                <label htmlFor="pincode" className="mb-2 block font-medium">
+                  Pincode
+                </label>
+                <input
+                  id="pincode"
+                  name="pincode"
+                  className="w-full rounded border px-3 py-2"
+                  value={newAddress.pincode}
+                  onChange={handleInputChange}
+                  required
+                />
+              </div>
+              <div className="mt-4 flex justify-end gap-2">
+                <button
+                  type="submit"
+                  className="bg_purple_light rounded px-4 py-2 text-white hover:bg-orange-600"
+                >
+                  Save Address
+                </button>
+                <button
+                  type="button"
+                  className="rounded bg-gray-300 px-4 py-2 text-gray-800 hover:bg-gray-400"
+                  onClick={() => setOpenModal(false)}
+                >
+                  Cancel
+                </button>
+              </div>
+            </form>
+            <button
+              className="absolute top-2 right-2 text-xl text-gray-500 hover:text-gray-700"
+              onClick={() => setOpenModal(false)}
+              aria-label="Close"
+            >
+              &times;
+            </button>
           </div>
-        </Modal.Body>
-        <Modal.Footer>
-          <Button className="bg_purple_light" onClick={handleAddAddress}>
-            Save Address
-          </Button>
-          <Button color="gray" onClick={() => setOpenModal(false)}>
-            Cancel
-          </Button>
-        </Modal.Footer>
-      </Modal>
+        </div>
+      )}
     </section>
   );
 }
