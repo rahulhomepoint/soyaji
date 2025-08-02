@@ -231,9 +231,7 @@ export default function Cart({ cart, updateQuantity }) {
 
           <div class="mx-auto mt-6 max-w-4xl flex-1 space-y-6 lg:sticky lg:top-8 lg:mt-0 lg:w-full">
             <div class="space-y-4 rounded-lg border border-gray-200 bg-white p-4 shadow-sm sm:p-6">
-              <p class="purple_text text-xl font-semibold">
-                Order summary
-              </p>
+              <p class="purple_text text-xl font-semibold">Order summary</p>
 
               <div class="space-y-4">
                 <div class="space-y-2">
@@ -247,9 +245,7 @@ export default function Cart({ cart, updateQuantity }) {
                   </dl>
 
                   <dl class="flex items-center justify-between gap-4">
-                    <dt class="text-base font-normal text-gray-500">
-                      Savings
-                    </dt>
+                    <dt class="text-base font-normal text-gray-500">Savings</dt>
                     <dd class="text-base font-medium text-red-600">-₹299.00</dd>
                   </dl>
 
@@ -263,9 +259,7 @@ export default function Cart({ cart, updateQuantity }) {
                   </dl>
 
                   <dl class="flex items-center justify-between gap-4">
-                    <dt class="text-base font-normal text-gray-500">
-                      Tax
-                    </dt>
+                    <dt class="text-base font-normal text-gray-500">Tax</dt>
                     <dd class="text-base font-medium text-gray-900">
                       ₹{Tax.toFixed(2)}
                     </dd>
@@ -273,9 +267,7 @@ export default function Cart({ cart, updateQuantity }) {
                 </div>
 
                 <dl class="flex items-center justify-between gap-4 border-t border-gray-200 pt-2">
-                  <dt class="text-base font-bold text-gray-900">
-                    Total
-                  </dt>
+                  <dt class="text-base font-bold text-gray-900">Total</dt>
                   <dd class="text-base font-bold text-gray-900">
                     ₹{TotalAmount + Tax}
                   </dd>
@@ -302,10 +294,7 @@ export default function Cart({ cart, updateQuantity }) {
               </button>
 
               <div class="flex items-center justify-center gap-2">
-                <span class="text-sm font-normal text-gray-500">
-                  {" "}
-                  or{" "}
-                </span>
+                <span class="text-sm font-normal text-gray-500"> or </span>
                 <a
                   href="#"
                   title=""

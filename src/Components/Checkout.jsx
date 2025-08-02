@@ -1,7 +1,14 @@
 import React, { useState } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { IoIosRemove, IoIosAdd } from "react-icons/io";
-import { Modal, Label, TextInput, Select, Textarea, Button } from "flowbite-react";
+import {
+  Modal,
+  Label,
+  TextInput,
+  Select,
+  Textarea,
+  Button,
+} from "flowbite-react";
 
 export default function Checkout() {
   const location = useLocation();
@@ -54,15 +61,15 @@ export default function Checkout() {
   // Function to handle input changes in the address form
   const handleInputChange = (e) => {
     const { name, value } = e.target;
-    setNewAddress(prev => ({
+    setNewAddress((prev) => ({
       ...prev,
-      [name]: value
+      [name]: value,
     }));
   };
 
   // Function to add a new address
   const handleAddAddress = () => {
-    setAddresses(prev => [...prev, newAddress]);
+    setAddresses((prev) => [...prev, newAddress]);
     setNewAddress({
       name: "",
       type: "HOME",
@@ -160,7 +167,7 @@ export default function Checkout() {
                   </button>
                 </div>
                 <div className="py-4">
-                  <button 
+                  <button
                     className="purple_text flex items-center text-sm font-medium hover:underline"
                     onClick={() => setOpenModal(true)}
                   >
@@ -382,8 +389,12 @@ export default function Checkout() {
           </div>
         </Modal.Body>
         <Modal.Footer>
-          <Button className="bg_purple_light" onClick={handleAddAddress}>Save Address</Button>
-          <Button color="gray" onClick={() => setOpenModal(false)}>Cancel</Button>
+          <Button className="bg_purple_light" onClick={handleAddAddress}>
+            Save Address
+          </Button>
+          <Button color="gray" onClick={() => setOpenModal(false)}>
+            Cancel
+          </Button>
         </Modal.Footer>
       </Modal>
     </section>
