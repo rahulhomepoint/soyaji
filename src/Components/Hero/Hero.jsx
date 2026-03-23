@@ -57,7 +57,11 @@ export const Hero = () => {
       </section>
       <div>
         {/* Features Row */}
-        <div className="md: z-10 mx-0 flex flex-wrap items-center justify-center gap-6 bg-white/90 px-4 py-4 shadow-lg md:mx-0 md:flex-row md:gap-12 md:px-0" role="list" aria-label="Product features">
+        <div
+          className="md: z-10 mx-0 flex flex-wrap items-center justify-center gap-6 bg-white/90 px-4 py-4 shadow-lg md:mx-0 md:flex-row md:gap-12 md:px-0"
+          role="list"
+          aria-label="Product features"
+        >
           <div className="flex items-center gap-2 text-sm text-[#4a295e] md:text-lg">
             <img
               src={organic}
@@ -67,12 +71,20 @@ export const Hero = () => {
             100% <span className="">Organic Products</span>
           </div>
           <div className="flex items-center gap-2 text-sm text-[#4a295e] md:text-lg">
-            <img src={baby} alt="Recommended for babies icon" className="h-5 w-5 md:h-6 md:w-6" />
+            <img
+              src={baby}
+              alt="Recommended for babies icon"
+              className="h-5 w-5 md:h-6 md:w-6"
+            />
             <span className="">Recommended</span> For Babies
           </div>
           <div className="flex items-center gap-2 text-sm text-[#4a295e] md:text-lg">
-            <img src={milk} alt="High quality raw milk icon" className="h-5 w-5 md:h-6 md:w-6" /> High
-            Quality <span className="">Raw Milk</span>
+            <img
+              src={milk}
+              alt="High quality raw milk icon"
+              className="h-5 w-5 md:h-6 md:w-6"
+            />{" "}
+            High Quality <span className="">Raw Milk</span>
           </div>
         </div>
         <div className="w-full bg-[#4a295e] px-4 py-4 text-center md:px-0">

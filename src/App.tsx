@@ -124,57 +124,57 @@ export default function App() {
 
   return (
     <HelmetProvider>
-    <BrowserRouter>
-      <SoyajiNavbar cart={cart} />
-      <main id="main-content">
-        <Routes>
-          <Route
-            path="/"
-            element={
-              <Home
-                addToCart={addToCart}
-                cart={cart}
-                updateQuantity={updateQuantity}
-              />
-            }
-          />
-          <Route
-            path="/products"
-            element={
-              <ProductsPage
-                addToCart={addToCart}
-                cart={cart}
-                updateQuantity={updateQuantity}
-                toast={toast}
-                hideToast={hideToast}
-              />
-            }
-          />
-          <Route
-            path="/product/:productId"
-            element={
-              <ProductDetails
-                addToCart={addToCart}
-                cart={cart}
-                updateQuantity={updateQuantity}
-                toast={toast}
-                hideToast={hideToast}
-              />
-            }
-          />
-          <Route path="/overview" element={<Overview />} />
-          <Route path="/about" element={<About />} />
-          <Route path="/order" element={<AskForOrder />} />
-          <Route
-            path="/cart"
-            element={<Cart cart={cart} updateQuantity={updateQuantity} />}
-          />
-          <Route path="/checkout" element={<Checkout />} />
-          {/* Add more routes as needed */}
-        </Routes>
-      </main>
-      <Footer />
-    </BrowserRouter>
+      <BrowserRouter>
+        <SoyajiNavbar cart={cart} />
+        <main id="main-content">
+          <Routes>
+            <Route
+              path="/"
+              element={
+                <Home
+                  addToCart={addToCart}
+                  cart={cart}
+                  updateQuantity={updateQuantity}
+                />
+              }
+            />
+            <Route
+              path="/products"
+              element={
+                <ProductsPage
+                  addToCart={addToCart}
+                  cart={cart}
+                  updateQuantity={updateQuantity}
+                  toast={toast}
+                  hideToast={hideToast}
+                />
+              }
+            />
+            <Route
+              path="/product/:productId"
+              element={
+                <ProductDetails
+                  addToCart={addToCart}
+                  cart={cart}
+                  updateQuantity={updateQuantity}
+                  toast={toast}
+                  hideToast={hideToast}
+                />
+              }
+            />
+            <Route path="/overview" element={<Overview />} />
+            <Route path="/about" element={<About />} />
+            <Route path="/order" element={<AskForOrder />} />
+            <Route
+              path="/cart"
+              element={<Cart cart={cart} updateQuantity={updateQuantity} />}
+            />
+            <Route path="/checkout" element={<Checkout />} />
+            {/* Add more routes as needed */}
+          </Routes>
+        </main>
+        <Footer />
+      </BrowserRouter>
     </HelmetProvider>
   );
 }

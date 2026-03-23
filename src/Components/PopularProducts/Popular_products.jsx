@@ -25,7 +25,10 @@ const PopularProducts = ({ addToCart, cart, updateQuantity }) => (
     }}
   >
     {/* Decorative background leaves or patterns can be added here if needed */}
-    <h2 id="popular-products-heading" className="mb-2 text-center text-3xl text-white md:text-3xl">
+    <h2
+      id="popular-products-heading"
+      className="mb-2 text-center text-3xl text-white md:text-3xl"
+    >
       Our Dairy Products For{" "}
       <span className="text-[#ffe066]">Healthy Living</span>
     </h2>
