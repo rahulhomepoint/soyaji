@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { Toast, ToastToggle } from "flowbite-react";
+import { SEO } from "../SEO";
 import { HiCheck } from "react-icons/hi";
 import { ProductCard } from "../../Util/Cards/ProductCard";
 import {
@@ -75,6 +76,12 @@ export default function ProductsPage({
 
   return (
     <div className="min-h-screen bg-[#f7ede2]">
+      <SEO
+        title="All Soya Dairy Products – Buy Online | Soyawala"
+        description="Shop all Soyawala products – soya milk, tofu, paneer, yogurt, cheese, ice cream and more. Fresh, organic, lactose-free dairy products delivered in Kolkata."
+        keywords="buy soya products online, soya milk shop, soya paneer, lactose free products, organic dairy store Kolkata"
+        canonical="https://www.soyawala.com/products"
+      />
       <div
         className={`flex h-[100px] items-center justify-center md:h-[200px]`}
         style={{
@@ -83,6 +90,8 @@ export default function ProductsPage({
           backgroundPosition: "center",
           backgroundRepeat: "no-repeat",
         }}
+        role="banner"
+        aria-label="All Products page header"
       >
         <h1 className="text-2xl font-bold text-white">ALL PRODUCTS</h1>
       </div>
@@ -90,7 +99,7 @@ export default function ProductsPage({
       <div className="py-3">
         <div className="mx-auto flex max-w-7xl flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
           <div className="flex w-full flex-wrap items-center justify-between gap-4 p-2">
-            <h1 className="purple_text text-2xl font-bold">All Products</h1>
+            <h2 className="purple_text text-2xl font-bold">All Products</h2>
             <div className="hidden items-center gap-2 md:inline-flex">
               <span className="purple_text text-sm font-medium opacity-70">
                 Buy Dairy Products:

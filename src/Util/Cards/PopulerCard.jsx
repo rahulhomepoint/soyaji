@@ -62,6 +62,9 @@ export const PopulerCard = ({
           <img
             src={image}
             alt={title}
+            loading="lazy"
+            decoding="async"
+            fetchPriority="low"
             className={`h-full w-full object-cover transition-all duration-500 ${loaded ? "blur-0 opacity-100" : "opacity-0 blur-md"}`}
             onLoad={() => setLoaded(true)}
           />

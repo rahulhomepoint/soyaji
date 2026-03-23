@@ -3,6 +3,7 @@ import React, { useState } from "react";
 import { useParams, Link } from "react-router-dom";
 import { HiCheck, HiArrowLeft, HiStar, HiClock, HiScale } from "react-icons/hi";
 import { Toast, ToastToggle } from "flowbite-react";
+import { SEO } from "../SEO";
 import headerBG from "../../asset/BANNER_01.jpg";
 import organic1 from "../../asset/ICONS/organic_1.png";
 import organic2 from "../../asset/ICONS/organic_2.png";
@@ -102,8 +103,52 @@ export default function ProductDetails({
     return stars;
   };
   const [show, setShow] = useState(false);
+
+  // Build Product structured data for this specific product
+  const productSchema = product
+    ? {
+        "@context": "https://schema.org",
+        "@type": "Product",
+        name: product.name,
+        description: product.description,
+        sku: product.id,
+        brand: {
+          "@type": "Brand",
+          name: "Soyawala",
+        },
+        offers: {
+          "@type": "Offer",
+          url: `https://www.soyawala.com/product/${product.id}`,
+          priceCurrency: "INR",
+          price: product.price,
+          availability: "https://schema.org/InStock",
+          seller: {
+            "@type": "Organization",
+            name: "Soyawala",
+          },
+        },
+        ...(product.rating && {
+          aggregateRating: {
+            "@type": "AggregateRating",
+            ratingValue: product.rating,
+            reviewCount: product.reviews || 1,
+          },
+        }),
+      }
+    : null;
+
   return (
     <div className="min-h-screen scroll-smooth bg-[#f7f1eb]/70">
+      {product && (
+        <SEO
+          title={`${product.name} – Buy Online | Soyawala`}
+          description={`${product.description} Order ${product.name} (${product.unit}) online at ₹${product.price}. Fresh, organic & lactose-free delivery in Kolkata.`}
+          keywords={`${product.name}, ${product.category || "soya product"}, buy ${product.name} online, Soyawala, lactose free dairy`}
+          canonical={`https://www.soyawala.com/product/${product.id}`}
+          ogType="product"
+          structuredData={productSchema}
+        />
+      )}
       {!product ? (
         <div
           className="flex h-[100px] items-center justify-center md:h-[200px]"

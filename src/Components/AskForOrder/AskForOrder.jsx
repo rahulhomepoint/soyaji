@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { SEO } from "../SEO";
 import contact_bg from "../../asset/WEBSITE_ASSETS/Contact_BG.png";
 import contact_us from "../../asset/WEBSITE_ASSETS/CONTACT_US.jpg";
 import leaf_icon from "../../asset/logo_purple.png";
@@ -29,6 +30,13 @@ export const AskForOrder = () => {
   };
 
   return (
+    <>
+      <SEO
+        title="Order Soya Products Online – Contact Us | Soyawala"
+        description="Place a bulk order or make an enquiry for Soyawala's fresh soya-based dairy products. Fast delivery in Kolkata. Fill the form and we'll get back to you."
+        keywords="order soya products, bulk soya milk order, contact Soyawala, soya dairy enquiry Kolkata"
+        canonical="https://www.soyawala.com/order"
+      />
     <div
       className="relative overflow-hidden"
       style={{
@@ -177,5 +185,6 @@ export const AskForOrder = () => {
         </div>
       </div>
     </div>
+    </>
   );
 };

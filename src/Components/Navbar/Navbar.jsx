@@ -36,9 +36,19 @@ const SoyajiNavbar = ({ cart }) => {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
   return (
+    <>
+      <a
+        href="#main-content"
+        className="sr-only focus:not-sr-only focus:absolute focus:top-2 focus:left-2 focus:z-[9999] focus:rounded focus:bg-amber-400 focus:px-4 focus:py-2 focus:font-bold focus:text-[#4a295e]"
+      >
+        Skip to main content
+      </a>
     <Navbar
       fluid
-      className={`sticky top-0 z-50 w-full py-2 transition-transform duration-300 sm:!px-20 dark:!bg-white ${visible ? "translate-y-0" : "-translate-y-full"}`}
+      className={`sticky top-0 z-50 w-full py-2 transition-transform duration-300 sm:!px-20 dark:!bg-white ${
+        visible ? "translate-y-0" : "-translate-y-full"
+      }`}
+      aria-label="Main navigation"
     >
       {/* Logo and Brand */}
       <NavbarBrand href="/">
@@ -124,6 +134,7 @@ const SoyajiNavbar = ({ cart }) => {
         </Link>
       </div>
     </Navbar>
+    </>
   );
 };
 

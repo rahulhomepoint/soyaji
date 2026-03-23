@@ -1,3 +1,4 @@
+import { HelmetProvider } from "react-helmet-async";
 // @ts-expect-error: No declaration file for JSX import from JS file
 import SoyajiNavbar from "./Components/Navbar/Navbar";
 // @ts-expect-error: No declaration file for JSX import from JS file
@@ -58,7 +59,7 @@ export default function App() {
     show: false,
     message: "",
     position: { x: 0, y: 0 },
-    timer: null as number | null,
+    timer: null as ReturnType<typeof setTimeout> | null,
   });
 
   // Add to cart handler
@@ -122,54 +123,58 @@ export default function App() {
   };
 
   return (
+    <HelmetProvider>
     <BrowserRouter>
       <SoyajiNavbar cart={cart} />
-      <Routes>
-        <Route
-          path="/"
-          element={
-            <Home
-              addToCart={addToCart}
-              cart={cart}
-              updateQuantity={updateQuantity}
-            />
-          }
-        />
-        <Route
-          path="/products"
-          element={
-            <ProductsPage
-              addToCart={addToCart}
-              cart={cart}
-              updateQuantity={updateQuantity}
-              toast={toast}
-              hideToast={hideToast}
-            />
-          }
-        />
-        <Route
-          path="/product/:productId"
-          element={
-            <ProductDetails
-              addToCart={addToCart}
-              cart={cart}
-              updateQuantity={updateQuantity}
-              toast={toast}
-              hideToast={hideToast}
-            />
-          }
-        />
-        <Route path="/overview" element={<Overview />} />
-        <Route path="/about" element={<About />} />
-        <Route path="/order" element={<AskForOrder />} />
-        <Route
-          path="/cart"
-          element={<Cart cart={cart} updateQuantity={updateQuantity} />}
-        />
-        <Route path="/checkout" element={<Checkout />} />
-        {/* Add more routes as needed */}
-      </Routes>
+      <main id="main-content">
+        <Routes>
+          <Route
+            path="/"
+            element={
+              <Home
+                addToCart={addToCart}
+                cart={cart}
+                updateQuantity={updateQuantity}
+              />
+            }
+          />
+          <Route
+            path="/products"
+            element={
+              <ProductsPage
+                addToCart={addToCart}
+                cart={cart}
+                updateQuantity={updateQuantity}
+                toast={toast}
+                hideToast={hideToast}
+              />
+            }
+          />
+          <Route
+            path="/product/:productId"
+            element={
+              <ProductDetails
+                addToCart={addToCart}
+                cart={cart}
+                updateQuantity={updateQuantity}
+                toast={toast}
+                hideToast={hideToast}
+              />
+            }
+          />
+          <Route path="/overview" element={<Overview />} />
+          <Route path="/about" element={<About />} />
+          <Route path="/order" element={<AskForOrder />} />
+          <Route
+            path="/cart"
+            element={<Cart cart={cart} updateQuantity={updateQuantity} />}
+          />
+          <Route path="/checkout" element={<Checkout />} />
+          {/* Add more routes as needed */}
+        </Routes>
+      </main>
       <Footer />
     </BrowserRouter>
+    </HelmetProvider>
   );
 }

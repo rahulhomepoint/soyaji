@@ -1,4 +1,5 @@
 import React from "react";
+import { SEO } from "../SEO";
 import aboutImg1 from "../../asset/WEBSITE_ASSETS/about_us_img.jpg";
 import aboutImg2 from "../../asset/WEBSITE_ASSETS/about_us_img_2.jpg";
 import organicIcon from "../../asset/logo_yellow.png";
@@ -11,6 +12,12 @@ import RIGHT_LEAF from "../../asset/WEBSITE_ASSETS/leaf-01.png";
 export const About = () => {
   return (
     <div className="relative md:overflow-hidden">
+      <SEO
+        title="About Us – Soyawala | Our Story & Mission"
+        description="Learn about Soyawala – agriculture graduates dedicated to bringing fresh, high-quality soya-based dairy products to your doorstep. Our products are 100% organic, lactose free and chemical preservative free."
+        keywords="about Soyawala, soya dairy brand Kolkata, organic plant-based dairy, who is Soyawala"
+        canonical="https://www.soyawala.com/about"
+      />
       <section className="flex flex-wrap items-center justify-center bg-white py-16 md:w-full">
         <div className="flex max-w-7xl flex-wrap items-center gap-6 px-6 md:w-full md:justify-center md:gap-12">
           {/* Left Side: Images and About Us */}

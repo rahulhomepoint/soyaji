@@ -4,7 +4,8 @@ import soyawalaLogo from "../../asset/WEBSITE_ASSETS/Logo_footer.png";
 
 export const Footer = () => {
   return (
-    <div
+    <footer
+      aria-label="Site footer"
       style={{
         backgroundImage: `url(${footerBg})`,
         backgroundSize: "cover",
@@ -32,7 +33,6 @@ export const Footer = () => {
             display: "flex",
             flexDirection: "row",
             justifyContent: "space-between",
-            alignItems: "flex-start",
             padding: "40px 30px 0 30px",
             alignItems: "center",
             flexWrap: "wrap",
@@ -112,6 +112,6 @@ export const Footer = () => {
           </div>
         </div>
       </div>
-    </div>
+    </footer>
   );
 };

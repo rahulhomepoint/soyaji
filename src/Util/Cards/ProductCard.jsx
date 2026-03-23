@@ -63,6 +63,9 @@ export const ProductCard = ({
           <img
             src={image}
             alt={name}
+            loading="lazy"
+            decoding="async"
+            fetchPriority="low"
             className={`h-34 w-full rounded-b-2xl border-b border-[#4a295e] object-cover transition-all duration-500 md:h-54 ${loaded ? "blur-0 opacity-100" : "opacity-0 blur-md"}`}
             onLoad={() => setLoaded(true)}
           />
